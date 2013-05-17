@@ -7,13 +7,16 @@ import javax.swing.*;
 
 public class Window extends JFrame{
 	//hesite pas à mettre des noms plus explicite
+	
 	private JPanel p=new JPanel();
 	private JPanel west=new JPanel();
 	private JPanel center=new JPanel();
-	private JTextField e1=new JTextField("Entrez le paramètre 1");
-	private JTextField e2=new JTextField("Entrez le paramètre 2");
-	private JTextField e3=new JTextField("Entrez le paramètre 3");
-	private JButton ok=new JButton("submit");
+	
+	private JTextField e1=new JTextField("");
+	private JTextField e2=new JTextField("");
+	private JTextField e3=new JTextField("");
+	
+	private JButton ok=new JButton("Submit");
 	private LinkedList<JLabel> result=new LinkedList<JLabel>();
 	private Rectangle dimension=GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	
