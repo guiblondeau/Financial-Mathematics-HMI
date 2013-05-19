@@ -1,13 +1,19 @@
 package presentation;
 
 import java.awt.*;
-import java.util.LinkedList;
 
 import javax.swing.*;
 
+import controller.*;
+
+import abstraction.Arguments;
+
 public class Window extends JFrame{
-	//hesite pas à mettre des noms plus explicite
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3322015316749586398L;
 	private JPanel p=new JPanel();
 	private JPanel west=new JPanel();
 	private JPanel center=new JPanel();
@@ -37,7 +43,6 @@ public class Window extends JFrame{
 	
 	public Window() throws HeadlessException {
 		super("Mais qu'est-ce que tu fais là, Quentin Noharet?");
-		
 		Container g = this.getContentPane();
 		g.add(p);
 		p.setLayout(new BorderLayout());
@@ -179,10 +184,22 @@ public class Window extends JFrame{
 		panelRhoPut.add(rhoPut);
 		center.add(panelRhoPut);
 		
+		Arguments arg= new Arguments();
+		/*ControllerActualValue cAValue=*/new ControllerActualValue(arg,this.actualValue);
+		/*ControllerInterestRate cIRate=*/new ControllerInterestRate(arg,this.interestRate);
+		/*ControllerStrikePrice cSPrice=*/new ControllerStrikePrice(arg,this.strikePrice);
+		/*ControllerTimeRemaining cTRemaining=*/new ControllerTimeRemaining(arg,this.timeRemaining);
+		/*ControllerVolatility cVolatility=*/new ControllerVolatility(arg,this.volatility);
+		/*ControllerSubmit cs=*/new ControllerSubmit(arg,this.ok,call,put,deltaCall,deltaPut,gammaCall,gammaPut,thetaCall,thetaPut,vegaCall,vegaPut,rhoCall,rhoPut);
+		ok.setEnabled(false);
+		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(dimension.width/2,dimension.height/2));
 		this.pack();
 		this.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null, "Appuyez sur ENTER à chaque fois que vous modifiez un paramètre d'entrée, sinon le modèle ne prend pas en compte la modification. Une fois terminé, cliquez sur 'submit'.", null, JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 	
 }

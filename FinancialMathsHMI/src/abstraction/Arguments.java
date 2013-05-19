@@ -2,7 +2,7 @@ package abstraction;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-public class Arguments {
+public class Arguments extends java.util.Observable{
 
 	private double actualValue;
 	private double timeRemaining;
@@ -13,6 +13,76 @@ public class Arguments {
 	private double d2;
 	private NormalDistribution nd;
 	
+	public double getActualValue() {
+		return actualValue;
+	}
+
+	public void setActualValue(double actualValue) {
+		this.actualValue = actualValue;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public double getTimeRemaining() {
+		return timeRemaining;
+	}
+
+	public void setTimeRemaining(double timeRemaining) {
+		this.timeRemaining = timeRemaining;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public double getStrikePrice() {
+		return strikePrice;
+	}
+
+	public void setStrikePrice(double strikePrice) {
+		this.strikePrice = strikePrice;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public double getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(double interestRate) {
+		this.interestRate = interestRate;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public double getVolatility() {
+		return volatility;
+	}
+
+	public void setVolatility(double volatility) {
+		this.volatility = volatility;
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public double getD1() {
+		return d1;
+	}
+
+	public void setD1(double d1) {
+		this.d1 = d1;
+	}
+
+	public void setD2(double d2) {
+		this.d2 = d2;
+	}
+
+	public double getD2() {
+		return d2;
+	}
+
+	public Arguments() {
+		this(0.0,0.0,0.0,0.0,0.0);
+	}
+
 	public Arguments(double actualValue, double timeRemaining,
 			double strikePrice, double interestRate, double volatility) {
 		super();
