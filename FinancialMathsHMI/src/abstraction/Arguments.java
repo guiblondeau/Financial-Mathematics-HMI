@@ -97,17 +97,24 @@ public class Arguments extends java.util.Observable{
 	}
 	
 	public double calculusd1(){
-		return (1/(this.volatility*Math.sqrt(timeRemaining)))*(Math.log(actualValue/strikePrice)+(interestRate+0.5*Math.pow(volatility, 2))*timeRemaining);
+		double part1 = Math.log(actualValue/strikePrice);
+		double part2 = (interestRate+Math.pow(volatility,2)/2)*timeRemaining;
+		double part3 = volatility*Math.sqrt(timeRemaining);
+		System.out.println("D1:"+(part1+part2)/part3);
+		return (part1+part2)/part3;
 	}
 	
 	public double calculusd2(){
+		System.out.println("D2:"+(d1-volatility*Math.sqrt(timeRemaining)));
 		return d1-volatility*Math.sqrt(timeRemaining);
 	}
 	
 	public double call(){
 		double part1 = actualValue*nd.cumulativeProbability(d1);
+		System.out.println(part1);
 		double part2 = strikePrice*Math.exp(-interestRate*timeRemaining)*nd.cumulativeProbability(d2);
-		return part1+part2;
+		System.out.println(part2);
+		return part1-part2;
 	}
 	
 	public double put(){
