@@ -17,6 +17,7 @@ public class Window extends JFrame{
 	private JPanel p=new JPanel();
 	private JPanel west=new JPanel();
 	private JPanel center=new JPanel();
+	private JPanel north = new JPanel();
 	
 	private JTextField actualValue=new JTextField("");
 	private JTextField timeRemaining=new JTextField("");
@@ -42,16 +43,16 @@ public class Window extends JFrame{
 	private Rectangle dimension=GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	
 	public Window() throws HeadlessException {
-		super("Mais qu'est-ce que tu fais là, Quentin Noharet?");
+		super("Pricer");
 		Container g = this.getContentPane();
 		g.add(p);
 		p.setLayout(new BorderLayout());
 		p.add(west,BorderLayout.WEST);
 		p.add(center,BorderLayout.CENTER);
-		
+		p.add(north,BorderLayout.NORTH);
 		JPanel westSouth=new JPanel();
 		JPanel westCenter=new JPanel();
-		
+		north.add(new JLabel("Veuillez appuyer sur entrée à chaque fois que vous insérez une valeur"));
 		west.setLayout(new BorderLayout());
 		west.add(westSouth,BorderLayout.SOUTH);
 		west.add(westCenter,BorderLayout.CENTER);
@@ -197,8 +198,7 @@ public class Window extends JFrame{
 		this.setPreferredSize(new Dimension(dimension.width/2,dimension.height/2));
 		this.pack();
 		this.setVisible(true);
-		
-		JOptionPane.showMessageDialog(null, "Appuyez sur ENTER à chaque fois que vous modifiez un paramètre d'entrée, sinon le modèle ne prend pas en compte la modification. Une fois terminé, cliquez sur 'submit'.", null, JOptionPane.INFORMATION_MESSAGE);
+	
 		
 	}
 	
